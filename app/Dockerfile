@@ -1,7 +1,10 @@
 # FROM：基底映像檔
 FROM python:alpine3.10
 
-RUN apk update && apk add gcc libc-dev make git libffi-dev openssl-dev python3-dev libxml2-dev libxslt-dev 
+RUN apk update && apk add gcc libc-dev make git libffi-dev openssl-dev python3-dev libxml2-dev libxslt-dev && apt install wget && apt install unzip
+# 安裝 chrone  # 安裝 chrone-driver
+RUN wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/115.0.5790.170/linux64/chrome-linux64.zip
+RUN unzip chrome-linux64.zip
 #tk-dev
 RUN /usr/local/bin/python -m pip install --upgrade pip
 
@@ -20,11 +23,8 @@ COPY --chown=admin:admin requirements.txt /home/admin
 ENV PATH="/home/admin/.local/bin:${PATH}"
 
 RUN pip3 install --user --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host=files.pythonhosted.org --no-cache-dir -r requirements.txt
-# 安裝 chrone 
-RUN apt update && apt install wget && apt install unzip
-RUN wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/115.0.5790.170/linux64/chrome-linux64.zip
-RUN unzip chrome-linux64.zip
-# 安裝 chrone-driver
+
+
 
 # run container 時要執行的命令 COPY . /home/app
 COPY --chown=admin:admin . /home/admin
