@@ -18,8 +18,9 @@ services:
     restart: always
   
   db:
-    image: mysql:latest
-    # restart: always
+    # image: mysql:latest
+    build: .
+    restart: always
     ports:
       - 3300:3300
     environment:
