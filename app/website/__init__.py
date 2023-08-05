@@ -21,7 +21,6 @@ def create_app():
     # app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{user}:{passwd}@{host}:{port}/{db_name}'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     # db.init_app(app)
-    db.connect()
 
     from .views import views
 
