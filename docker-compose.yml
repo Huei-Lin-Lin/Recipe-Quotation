@@ -18,7 +18,8 @@ services:
     restart: always
   
   mysql:
-    image: mysql:5.7
+    # image: mysql:5.7
+    build: ./app
     ports:
       - 3316:3316
     environment:
