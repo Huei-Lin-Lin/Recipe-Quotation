@@ -9,7 +9,6 @@ services:
       - selenium
     links:
       - mysql
-    dockerfile: ./app/Dockerfile
   
   selenium:
     image: selenium/standalone-chrome
