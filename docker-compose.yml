@@ -27,9 +27,10 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: dbadmin
       MYSQL_PASSWORD: dbadmin
-      MYSQL_DATABASE: lsa2
+      MYSQL_DATABASE: lsa2    
       TZ: Asia/Taiwan
     volumes:
+      - db-data:/var/lib/mysql
       - ./db:/docker-entrypoint-initdb.d
 
   phpmyadmin:
