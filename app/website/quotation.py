@@ -47,6 +47,7 @@ def queryFoodPrice(foodList):
         # result = Food.query.filter_by(name=food).first()
         if db.cursor == None:
             db.cursor = db.connect()
+        print(f"\n===== {db.cursor} =====\n")
         result = db.getFoodPrice(food)
         # result = queryFoodPrice(food)
         if result == None:
