@@ -19,7 +19,7 @@ services:
   
   db:
     # image: mysql:latest
-    build: .
+    build: ./app
     restart: always
     ports:
       - 3300:3300
