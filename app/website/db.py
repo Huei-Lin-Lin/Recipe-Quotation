@@ -17,7 +17,7 @@ class MyDB:
         self.host = host
         self.port = port
         self.database = database
-        self.cursor = None
+        self.db = None
 
     def connect(self):
         try:
