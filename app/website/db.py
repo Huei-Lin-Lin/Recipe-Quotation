@@ -17,7 +17,7 @@ class MyDB:
         self.host = host
         self.port = port
         self.database = database
-        self.db = None
+        self.cursor = None
 
     def connect(self):
         try:
@@ -31,17 +31,18 @@ class MyDB:
             }
             mydb = mysql.connector.connect(**config)
             # 生成一個遊標物件 ( 相當於 cmd 開啟 mysql 中的 mysql> )
-            self.db = mydb
+            self.cursor = mydb.cursor(dictionary=True)
             print("連線結果", mydb)  # 印出連線結果
+            return self.cursor
         except:
             print("資料庫連接失敗：")
 
     def getFoodPrice(self, str):
         # 定義 SQL 語句
-        cursor = self.db.cursor(dictionary=True)
+        # cursor = self.db.cursor(dictionary=True)
         sql = 'select * from foodprice WHERE foodName LIKE \'%{str}%\' '.format(
             str=str)
-        cursor.execute(sql)  # 執行 SQL 語句
-        result = cursor.fetchall()  # 獲取返回結果
-        cursor.close()
+        self.cursor.execute(sql)  # 執行 SQL 語句
+        result = self.cursor.fetchall()  # 獲取返回結果
+        # cursor.close()
         return result
