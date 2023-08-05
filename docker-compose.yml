@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  app:
+    build: ./app
+    ports:
+      - 5000:5000
+    depends_on:
+      - selenium
+    links:
+      - mysql
+    dockerfile: ./app/Dockerfile
+  
+  selenium:
+    image: selenium/standalone-chrome
+    ports:
+      - 4444:4444
+      - 7900:7900
+    restart: always
+  
+  mysql:
+    image: mysql:latest
+    ports:
+      - 3316:3316
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: dbadmin
+      MYSQL_PASSWORD: dbadmin
+      TZ: Asia/Taiwan
+
+  # phpmyadmin:
+  #   image: phpmyadmin:latest
+  #   container_name: web_phpmyadmin
+  #   ports:
+  #     - 8080:80
+  #   environment:
+  #     # - PMA_ARBITRART = 1
+  #     - PMA_HOST=mysql
+  #     # - PMA_USER=root
+  #     # - PMA_PASSWORD=12345678
+  #   links:
+  #     - mysql
+  #   restart: always
