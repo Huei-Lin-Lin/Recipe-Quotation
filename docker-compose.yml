@@ -18,7 +18,7 @@ services:
     restart: always
   
   mysql:
-    image: mysql:latest
+    image: mysql:5.7
     ports:
       - 3316:3316
     volumes:
