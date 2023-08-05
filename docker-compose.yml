@@ -26,8 +26,6 @@ services:
     environment:
       MYSQL_ROOT_USER: root
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: dbadmin
-      MYSQL_PASSWORD: dbadmin
       TZ: Asia/Taiwan
 
   phpmyadmin:
