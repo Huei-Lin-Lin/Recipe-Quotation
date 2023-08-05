@@ -27,7 +27,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       TZ: Asia/Taiwan
     volumes:
-      - ./db:/docker-entrypoint-initdb.d
+      - ./db:/docker-entrypoint-initdb.d/:ro
 
   phpmyadmin:
     image: phpmyadmin:latest
