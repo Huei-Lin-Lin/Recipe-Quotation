@@ -1,4 +1,5 @@
 flask
 flask-sqlalchemy
 selenium
+python-dotenv
 flask[async]
