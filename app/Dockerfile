@@ -7,9 +7,9 @@ FROM python:alpine3.10
 RUN apk add --no-cache bash
 RUN apk update && apk add gcc libc-dev make git libffi-dev openssl-dev python3-dev libxml2-dev libxslt-dev 
 # 安裝 chrone  # 安裝 chrone-driver
-RUN apk add wget && apk add unzip
-RUN bin/bash -c 'wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/115.0.5790.170/linux64/chrome-linux64.zip'
-RUN bin/bash -c 'unzip chrome-linux64.zip'
+# RUN apk add wget && apk add unzip
+# RUN bin/bash -c 'wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/115.0.5790.170/linux64/chrome-linux64.zip'
+# RUN bin/bash -c 'unzip chrome-linux64.zip'
 # RUN bin/bash -c 'wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/115.0.5790.170/linux64/chromedriver-linux64.zip'
 # RUN bin/bash -c 'unzip chromedriver-linux64.zip'
 
