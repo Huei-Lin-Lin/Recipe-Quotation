@@ -32,7 +32,7 @@ services:
       TZ: Asia/Taiwan
     volumes:
       - db-data:/var/lib/mysql
-      - ./db:/docker-entrypoint-initdb.d/:ro
+      - ./db/:/docker-entrypoint-initdb.d/:ro
 
   phpmyadmin:
     image: phpmyadmin:latest
