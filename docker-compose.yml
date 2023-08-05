@@ -8,7 +8,7 @@ services:
     depends_on:
       - selenium
     links:
-      - mysql
+      - db
   
   selenium:
     image: selenium/standalone-chrome
@@ -44,5 +44,5 @@ services:
       # - PMA_USER=root
       # - PMA_PASSWORD=12345678
     links:
-      - mysql
+      - db
     restart: always
