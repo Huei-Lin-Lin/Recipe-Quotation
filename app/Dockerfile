@@ -10,7 +10,7 @@ RUN bin/bash -c 'unzip chrome-linux64.zip'
 RUN bin/bash -c 'wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/115.0.5790.170/linux64/chromedriver-linux64.zip'
 RUN bin/bash -c 'unzip chromedriver-linux64.zip'
 RUN bin/bash -c 'pwd'
-RUN bin/bash -c 'mv chromedriver-linux64/chromedrive ./website/chromedriver/'
+RUN bin/bash -c 'mv ./chromedriver-linux64/chromedrive -d ./website/chromedriver/'
 #tk-dev
 RUN /usr/local/bin/python -m pip install --upgrade pip
 
