@@ -18,8 +18,8 @@ services:
     restart: always
   
   mysql:
-    # image: mysql:latest
-    build: ./app
+    image: mysql:latest
+    # build: ./app
     restart: always
     ports:
       - 3300:3300
@@ -29,10 +29,10 @@ services:
       MYSQL_USER: dbadmin
       MYSQL_PASSWORD: dbadmin
       MYSQL_DATABASE: lsa2    
-      # TZ: Asia/Taiwan
-    # volumes:
-      # - db-data:/var/lib/mysql
-      # - ./db:/docker-entrypoint-initdb.d/:ro
+      TZ: Asia/Taiwan
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./db:/docker-entrypoint-initdb.d/:ro
 
   phpmyadmin:
     image: phpmyadmin:latest
