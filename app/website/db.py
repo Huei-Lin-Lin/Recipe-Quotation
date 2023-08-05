@@ -36,7 +36,7 @@ class MyDB:
         except:
             print("資料庫連接失敗：")
 
-    def queryFoodPrice(self, str):
+    def getFoodPrice(self, str):
         # 定義 SQL 語句
         sql = 'select * from foodprice WHERE foodName LIKE \'%{str}%\' '.format(
             str=str)

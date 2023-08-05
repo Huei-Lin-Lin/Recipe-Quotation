@@ -4,7 +4,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
-from .db import queryFoodPrice
+# from .db import getFoodPrice
 
 
 def getQuotationResult(url, driver, notQueryList, foodDict):
@@ -47,8 +47,8 @@ def queryFoodPrice(foodList):
         # result = Food.query.filter_by(name=food).first()
         if db.cursor == None:
             db.connect()
-        result = db.queryFoodPrice(food)
-        result = queryFoodPrice(food)
+        result = db.getFoodPrice(food)
+        # result = queryFoodPrice(food)
         if result == None:
             tempDict[food] = None
         else:
