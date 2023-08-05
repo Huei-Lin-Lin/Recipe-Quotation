@@ -4,3 +4,4 @@ selenium
 pymysql
 python-dotenv
 flask[async]
+mysql.connector

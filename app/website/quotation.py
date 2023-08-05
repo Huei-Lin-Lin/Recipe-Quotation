@@ -1,9 +1,10 @@
 import json
-from .model import Food
+# from .model import Food
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
+from .db import queryFoodPrice
 
 
 def getQuotationResult(url, driver, notQueryList, foodDict):
@@ -40,9 +41,12 @@ def getQuotationResult(url, driver, notQueryList, foodDict):
 
 
 def queryFoodPrice(foodList):
+    from . import db
     tempDict = dict()  # 蔬菜估價結果
     for food in foodList:
-        result = Food.query.filter_by(name=food).first()
+        # result = Food.query.filter_by(name=food).first()
+        result = db.queryFoodPrice(food)
+        result = queryFoodPrice(food)
         if result == None:
             tempDict[food] = None
         else:
