@@ -1,6 +1,3 @@
-FROM mysql/mysql-server:5.7
-COPY ../db/lsa2.sql /docker-entrypoint-initdb.d/lsa2.sql
-
 # FROM：基底映像檔
 FROM python:alpine3.10
 
