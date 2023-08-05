@@ -5,7 +5,9 @@ import asyncio
 
 
 async def crawler(init_cuisine, init_headcount):
-    driver_path = ".\\website\\chromedriver\\chromedriver.exe"
+    driver_path = "./chromedriver-linux64/chromedrive"
+    # driver_path = ".\\website\\chromedriver\\chromedriver.exe"
+
     recipeURL = "https://icook.tw"
     twfoodURL = 'https://www.twfood.cc/'
 
