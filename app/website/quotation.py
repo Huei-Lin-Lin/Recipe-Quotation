@@ -45,7 +45,7 @@ def queryFoodPrice(foodList):
     tempDict = dict()  # 蔬菜估價結果
     for food in foodList:
         # result = Food.query.filter_by(name=food).first()
-        if db.cursor == None:
+        if db.db == None:
             db.connect()
         result = db.getFoodPrice(food)
         # result = queryFoodPrice(food)
