@@ -5,7 +5,7 @@ import asyncio
 
 
 async def crawler(init_cuisine, init_headcount):
-    driver_path = "./chromedriver-linux64/chromedrive"
+    driver_path = "http://selenium:4444/wd/hub"
     # driver_path = ".\\website\\chromedriver\\chromedriver.exe"
 
     recipeURL = "https://icook.tw"
@@ -29,7 +29,9 @@ async def crawler(init_cuisine, init_headcount):
         }
     }
     options.add_experimental_option('prefs', prefs)
-    driver = webdriver.Chrome(service=service, options=options)
+    # driver = webdriver.Chrome(service=service, options=options)
+
+    driver = webdriver.Remote(options=options, command_executor=driver_path)
 
     from .recipe import getRecipeData
     cook_headcount, cook_ingred_dict = getRecipeData(
