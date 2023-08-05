@@ -31,9 +31,8 @@ class MyDB:
             }
             mydb = mysql.connector.connect(**config)
             # 生成一個遊標物件 ( 相當於 cmd 開啟 mysql 中的 mysql> )
-            self.cursor = mydb.cursor(dictionary=True)
             print("連線結果", mydb)  # 印出連線結果
-            return self.cursor
+            return mydb.cursor(dictionary=True)
         except:
             print("資料庫連接失敗：")
 

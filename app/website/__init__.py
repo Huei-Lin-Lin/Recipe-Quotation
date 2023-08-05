@@ -23,7 +23,7 @@ def create_app():
     # db.init_app(app)
 
     with app.app_context():
-        db.connect()
+        db.cursor = db.connect()
 
     from .views import views
     app.register_blueprint(views, url_prefix='/')
