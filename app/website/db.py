@@ -29,6 +29,7 @@ class MyDB:
                 'database': self.db_name,
                 'auth_plugin': 'mysql_native_password'
             }
+            print("資料庫連線")
             mydb = mysql.connector.connect(**config)
             # 生成一個遊標物件 ( 相當於 cmd 開啟 mysql 中的 mysql> )
             print("連線結果", mydb)  # 印出連線結果
