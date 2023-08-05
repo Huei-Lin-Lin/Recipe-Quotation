@@ -1,10 +1,11 @@
 # FROM：基底映像檔
 FROM python:alpine3.10
 
-RUN apk update && apk add gcc libc-dev make git libffi-dev openssl-dev python3-dev libxml2-dev libxslt-dev && apt install wget && apt install unzip
+RUN apk update && apk add gcc libc-dev make git libffi-dev openssl-dev python3-dev libxml2-dev libxslt-dev 
 # 安裝 chrone  # 安裝 chrone-driver
-RUN wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/115.0.5790.170/linux64/chrome-linux64.zip
-RUN unzip chrome-linux64.zip
+RUN bin/bash -c 'apt install wget && apt install unzip'
+RUN bin/bash -c 'wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/115.0.5790.170/linux64/chrome-linux64.zip'
+RUN bin/bash -c 'unzip chrome-linux64.zip'
 #tk-dev
 RUN /usr/local/bin/python -m pip install --upgrade pip
 
