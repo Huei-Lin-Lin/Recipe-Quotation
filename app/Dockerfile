@@ -7,8 +7,8 @@ RUN apk update && apk add gcc libc-dev make git libffi-dev openssl-dev python3-d
 RUN apk add wget && apk add unzip
 RUN bin/bash -c 'wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/115.0.5790.170/linux64/chrome-linux64.zip'
 RUN bin/bash -c 'unzip chrome-linux64.zip'
-RUN bin/bash -c 'wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/115.0.5790.170/linux64/chromedriver-linux64.zip'
-RUN bin/bash -c 'unzip chromedriver-linux64.zip'
+# RUN bin/bash -c 'wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/115.0.5790.170/linux64/chromedriver-linux64.zip'
+# RUN bin/bash -c 'unzip chromedriver-linux64.zip'
 
 #tk-dev
 RUN /usr/local/bin/python -m pip install --upgrade pip
