@@ -21,7 +21,7 @@ ENV PATH="/home/admin/.local/bin:${PATH}"
 
 RUN pip3 install --user --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host=files.pythonhosted.org --no-cache-dir -r requirements.txt
 # 安裝 chrone 
-RUN sudo apt update && sudo apt install wget && sudo apt install unzip
+RUN apt update && apt install wget && apt install unzip
 RUN wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/115.0.5790.170/linux64/chrome-linux64.zip
 RUN unzip chrome-linux64.zip
 # 安裝 chrone-driver
