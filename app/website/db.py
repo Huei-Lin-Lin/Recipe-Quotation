@@ -48,7 +48,7 @@ import os
 #     cursor.close()
 #     return result
 
-def connect(user, password, host, port, database):
+def connect():
     try:
         config = {
             'user': 'dbadmin',
