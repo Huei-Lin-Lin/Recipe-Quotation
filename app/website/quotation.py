@@ -2,6 +2,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
+from .model import Food
 
 
 def element_exists(driver, mode, str):
@@ -47,15 +48,17 @@ def getQuotationResult(url, driver, notQueryList, foodDict):
 
 
 def queryFoodPrice(foodList):
-    from .db import getFoodPrice
+    # from .db import getFoodPrice
     tempDict = dict()  # 蔬菜估價結果
     for food in foodList:
-        result = getFoodPrice(food)
-        print(len(result), result)
-        if result == []:
+        # result = getFoodPrice(food)
+        result = Food.query.filter_by(name=food).first()
+        # if result == []:
+        if result == None:
             tempDict[food] = None
         else:
-            tempDict[food] = [result[0]['price'], result[0]['unit']]
+            tempDict[food] = [result.price, result.unit]
+            # tempDict[food] = [result[0]['price'], result[0]['unit']]
     return tempDict
 
 
