@@ -40,12 +40,12 @@ def getQuotationResult(url, driver, notQueryList, foodDict):
 
 
 def queryFoodPrice(foodList):
-    from . import myDB
+    from .db import getFoodPrice
     tempDict = dict()  # 蔬菜估價結果
     for food in foodList:
-        if myDB.db == None or myDB.db.is_connected() == False:
-            myDB.db = myDB.connect()
-        result = myDB.getFoodPrice(food)
+        # if myDB.db == None or myDB.db.is_connected() == False:
+        #     myDB.db = myDB.connect()
+        result = getFoodPrice(food)
         print(len(result), result)
         if result == []:
             tempDict[food] = '找不到結果'
