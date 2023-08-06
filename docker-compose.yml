@@ -1,6 +1,22 @@
 version: '3'
 
 services:
+  app:
+    build: ./app
+    ports:
+      - 5000:5000
+    depends_on:
+      - selenium
+    links:
+      - mysql
+
+  selenium:
+    image: selenium/standalone-chrome
+    ports:
+      - 4444:4444
+      - 7900:7900
+    restart: always
+  
   mysql:
     image: mysql/mysql-server:5.7
     # build: ./app
@@ -32,19 +48,3 @@ services:
     links:
       - mysql
     restart: always
-  
-  selenium:
-    image: selenium/standalone-chrome
-    ports:
-      - 4444:4444
-      - 7900:7900
-    restart: always
-
-  app:
-    build: ./app
-    ports:
-      - 5000:5000
-    depends_on:
-      - selenium
-    links:
-      - mysql
