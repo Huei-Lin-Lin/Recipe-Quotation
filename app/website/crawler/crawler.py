@@ -1,12 +1,10 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-import asyncio
 
 
 async def crawler(init_cuisine, init_headcount):
     driver_path = "http://selenium:4444/wd/hub"
-    # driver_path = ".\\website\\chromedriver\\chromedriver-win64.exe"
 
     recipeURL = "https://icook.tw"
     twfoodURL = 'https://www.twfood.cc/'
@@ -29,10 +27,9 @@ async def crawler(init_cuisine, init_headcount):
         }
     }
     options.add_experimental_option('prefs', prefs)
-    # driver = webdriver.Chrome(service=service, options=options)
 
     driver = webdriver.Remote(options=options, command_executor=driver_path)
-    # try:
+
     from .recipe import getRecipeData
     cook_headcount, cook_ingred_dict = getRecipeData(
         driver, init_cuisine, recipeURL)
@@ -44,5 +41,3 @@ async def crawler(init_cuisine, init_headcount):
     result_dict = await arrangeData(init_headcount, cook_headcount,
                                     cook_ingred_dict)
     return quotation_food_dict, result_dict
-    # except:
-    #     driver.quit()

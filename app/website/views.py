@@ -1,6 +1,5 @@
 from flask import Blueprint, render_template, request, jsonify
 from .crawler.crawler import crawler
-import asyncio
 
 
 views = Blueprint('views', __name__)

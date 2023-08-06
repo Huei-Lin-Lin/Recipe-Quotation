@@ -48,17 +48,13 @@ def getQuotationResult(url, driver, notQueryList, foodDict):
 
 
 def queryFoodPrice(foodList):
-    # from .db import getFoodPrice
     tempDict = dict()  # 蔬菜估價結果
     for food in foodList:
-        # result = getFoodPrice(food)
         result = Food.query.filter_by(name=food).first()
-        # if result == []:
         if result == None:
             tempDict[food] = None
         else:
             tempDict[food] = [result.price, result.unit]
-            # tempDict[food] = [result[0]['price'], result[0]['unit']]
     return tempDict
 
 

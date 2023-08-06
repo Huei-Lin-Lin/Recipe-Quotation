@@ -14,7 +14,6 @@ $(function () {
       data: { cuisine: $cuisine.val(), headcount: $headcount.val() },
       type: "POST",
       success: function (data) {
-        // 把 #table div 清空，這樣再次搜尋就不會繼續顯示之前的搜尋結果
         $result.empty();
         for (var k in data) {
           var body =
