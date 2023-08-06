@@ -66,12 +66,15 @@ def connect(user, password, host, port, database):
 
 def getFoodPrice(str):
     # 定義 SQL 語句
-    mydb = connect(user, password, host, port, db_name)  # 連接 DB，讓資料自動組織成字典
-    cursor = mydb.cursor(dictionary=True)
-    sql = 'select * from food WHERE name = "{str}" '.format(
-        str=str)
-    cursor.execute(sql)  # 執行 SQL 語句
-    result = cursor.fetchall()  # 獲取返回結果
-    cursor.close()
-    mydb.close()
-    return result
+    try:
+        mydb = connect(user, password, host, port, db_name)  # 連接 DB，讓資料自動組織成字典
+        cursor = mydb.cursor(dictionary=True)
+        sql = 'select * from food WHERE name = "{str}" '.format(
+            str=str)
+        cursor.execute(sql)  # 執行 SQL 語句
+        result = cursor.fetchall()  # 獲取返回結果
+        cursor.close()
+        mydb.close()
+        return result
+    except Error as e:
+        print("資料庫連接失敗 2", e)
