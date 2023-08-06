@@ -51,8 +51,8 @@ import os
 def connect():
     try:
         config = {
-            'user': 'dbadmin',
-            'password': 'dbadmin',
+            'user': 'root',
+            'password': 'root',
             'host': 'mysql',
             'port': '3300',
             'database': 'lsa2',
