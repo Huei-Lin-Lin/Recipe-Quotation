@@ -3,12 +3,18 @@ from mysql.connector import Error
 from dotenv import load_dotenv
 import os
 
-load_dotenv()
-user = os.getenv('USER')
-password = os.getenv('PASSWORD')
-host = os.getenv('HOST')
-port = os.getenv('PORT')
-db_name = os.getenv('DB_NAME')
+# load_dotenv()
+# user = os.getenv('USER')
+# password = os.getenv('PASSWORD')
+# host = os.getenv('HOST')
+# port = os.getenv('PORT')
+# db_name = os.getenv('DB_NAME')
+
+# user = 'dbadmin'
+# PASSWORD = 'dbadmin'
+# HOST = 'mysql'
+# PORT = '3300'
+# DB_NAME = 'lsa2'
 
 
 # def connect(user, password, host, port, db_name):
@@ -45,11 +51,11 @@ db_name = os.getenv('DB_NAME')
 def connect(user, password, host, port, database):
     try:
         config = {
-            'user': user,
-            'password': password,
-            'host': host,
-            'port': port,
-            'database': database,
+            'user': 'dbadmin',
+            'password': 'dbadmin',
+            'host': 'mysql',
+            'port': '3300',
+            'database': 'lsa2',
             'auth_plugin': 'mysql_native_password'
         }
         mydb = mysql.connector.connect(**config)
@@ -67,7 +73,7 @@ def connect(user, password, host, port, database):
 def getFoodPrice(str):
     # 定義 SQL 語句
     try:
-        mydb = connect(user, password, host, port, db_name)  # 連接 DB，讓資料自動組織成字典
+        mydb = connect()  # 連接 DB，讓資料自動組織成字典
         cursor = mydb.cursor(dictionary=True)
         sql = 'select * from food WHERE name = "{str}" '.format(
             str=str)
