@@ -1,1 +1,3 @@
 app/website/__pycache__/
+app/website/chromedriver/
+app/.env
