@@ -13,7 +13,7 @@ db_name = os.getenv('DB_NAME')
 # user = 'dbadmin'
 # PASSWORD = 'dbadmin'
 # HOST = 'mysql'
-# PORT = '3300'
+# PORT = '3316'
 # DB_NAME = 'lsa2'
 
 
