@@ -34,6 +34,7 @@ def getQuotationResult(url, driver, notQueryList, foodDict):
             foodDict[food] = [price, unit]
         except:
             print(f"找不到 {food} 的結果")
+            foodDict[food] = "找不到結果"
             continue
     driver.quit()
     return foodDict
@@ -48,7 +49,7 @@ def queryFoodPrice(foodList):
         result = getFoodPrice(food)
         print(len(result), result)
         if result == []:
-            tempDict[food] = '找不到結果'
+            tempDict[food] = None
         else:
             tempDict[food] = [result[0]['price'], result[0]['unit']]
     return tempDict
@@ -57,7 +58,7 @@ def queryFoodPrice(foodList):
 def getNotQuery(foodDict):
     notQueryList = []
     for key, value in foodDict.items():
-        if value == '找不到結果':
+        if value == None:
             notQueryList = key
         else:
             continue
