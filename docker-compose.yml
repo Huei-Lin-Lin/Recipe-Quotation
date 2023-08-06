@@ -18,7 +18,7 @@ services:
     restart: always
   
   mysql:
-    image: mysql/mysql-server:5.7
+    image: mysql:latest
     # build: ./app
     restart: always
     ports:
