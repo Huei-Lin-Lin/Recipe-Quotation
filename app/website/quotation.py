@@ -15,7 +15,7 @@ def getQuotationResult(url, driver, notQueryList, foodDict):
         )
         search = search_box.find_element(By.ID, "textfield")
         search.clear()
-        search.send_keys('蒜頭')
+        search.send_keys(food)
         search.send_keys(Keys.RETURN)
         try:
             name = WebDriverWait(driver, 10).until(
@@ -57,7 +57,7 @@ def queryFoodPrice(foodList):
 def getNotQuery(foodDict):
     notQueryList = []
     for key, value in foodDict.items():
-        if value == None:
+        if value == '找不到結果':
             notQueryList = key
         else:
             continue
