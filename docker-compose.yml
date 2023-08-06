@@ -20,7 +20,7 @@ services:
   mysql:
     image: mysql:latest
     # build: ./app
-    # restart: always
+    restart: always
     ports:
       - 3300:3300
     volumes:
