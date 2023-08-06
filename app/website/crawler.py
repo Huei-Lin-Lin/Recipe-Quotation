@@ -32,16 +32,17 @@ async def crawler(init_cuisine, init_headcount):
     # driver = webdriver.Chrome(service=service, options=options)
 
     driver = webdriver.Remote(options=options, command_executor=driver_path)
+    try:
+        from .recipe import getRecipeData
+        cook_headcount, cook_ingred_dict = getRecipeData(
+            driver, init_cuisine, recipeURL)
 
-    from .recipe import getRecipeData
-    cook_headcount, cook_ingred_dict = getRecipeData(
-        driver, init_cuisine, recipeURL)
+        from .quotation import quotation
+        quotation_food_dict = await quotation(cook_ingred_dict, twfoodURL, driver)
 
-    from .quotation import quotation
-    quotation_food_dict = await quotation(cook_ingred_dict, twfoodURL, driver)
-
-    from .dataArrange import arrangeData
-    result_dict = await arrangeData(init_headcount, cook_headcount,
-                                    cook_ingred_dict)
-
-    return quotation_food_dict, result_dict
+        from .dataArrange import arrangeData
+        result_dict = await arrangeData(init_headcount, cook_headcount,
+                                        cook_ingred_dict)
+        return quotation_food_dict, result_dict
+    except:
+        driver.quit()

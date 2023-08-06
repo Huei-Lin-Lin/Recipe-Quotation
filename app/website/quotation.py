@@ -4,6 +4,14 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 
 
+def element_exists(driver, mode, str):
+    try:
+        driver.find_element(mode, str)
+        return True
+    except:
+        return False
+
+
 def getQuotationResult(url, driver, notQueryList, foodDict):
     for food in notQueryList:
         driver.get(url)
@@ -16,22 +24,22 @@ def getQuotationResult(url, driver, notQueryList, foodDict):
         search.send_keys(food)
         search.send_keys(Keys.RETURN)
         try:
-            name = WebDriverWait(driver, 10).until(
+            name = WebDriverWait(driver, 5).until(
                 EC.presence_of_element_located((By.CLASS_NAME, "text-left")),
                 "找不到指定的元素"
-            ).text
-            price = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.CLASS_NAME, "text-price")),
-                "找不到指定的元素"
-            ).text
-            unit = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located(
-                    (By.CLASS_NAME, "vege_chart_th_unit")),
-                "找不到指定的元素"
-            ).text
+            )
+            if name and element_exists(driver, By.CLASS_NAME, "text-price") == False:
+                name.find_element(By.TAG_NAME, "a").click()
+                WebDriverWait(driver, 5).until(
+                    EC.presence_of_element_located(
+                        (By.CLASS_NAME, "text-left")),
+                    "找不到指定的元素"
+                )
+            price = driver.find_element(By.CLASS_NAME, "text-price").text
+            unit = driver.find_element(
+                By.CLASS_NAME, "vege_chart_th_unit").text
             foodDict[food] = [price, unit]
         except:
-            print(f"找不到 {food} 的結果")
             foodDict[food] = "找不到結果"
             continue
     driver.quit()
