@@ -1,9 +1,7 @@
-# from .model import Food
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
-# from .db import getFoodPrice
 
 
 def getQuotationResult(url, driver, notQueryList, foodDict):
@@ -44,8 +42,6 @@ def queryFoodPrice(foodList):
     from .db import getFoodPrice
     tempDict = dict()  # 蔬菜估價結果
     for food in foodList:
-        # if myDB.db == None or myDB.db.is_connected() == False:
-        #     myDB.db = myDB.connect()
         result = getFoodPrice(food)
         print(len(result), result)
         if result == []:
