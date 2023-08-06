@@ -46,14 +46,13 @@ def queryFoodPrice(foodList):
     for food in foodList:
         # result = Food.query.filter_by(name=food).first()
         # if db.cursor == None:
-        db.cursor = db.connect()
-        print(f"\n===== {db.cursor} =====\n")
+        # db.cursor = db.connect()
         result = db.getFoodPrice(food)
-        # result = queryFoodPrice(food)
-        if result == None:
-            tempDict[food] = None
+        print(len(result), result)
+        if result == []:
+            tempDict[food] = '找不到結果'
         else:
-            tempDict[food] = [result.price, result.unit]
+            tempDict[food] = [result[0]['price'], result[0]['unit']]
     return tempDict
 
 

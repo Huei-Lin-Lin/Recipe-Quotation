@@ -1,4 +1,5 @@
 import mysql.connector
+from mysql.connector import Error
 from dotenv import load_dotenv
 import os
 
@@ -17,32 +18,34 @@ class MyDB:
         self.host = host
         self.port = port
         self.database = database
-        self.cursor = None
+        self.db = None
 
     def connect(self):
         try:
             config = {
                 'user': self.user,
-                'password': self.passwd,
+                'password': self.password,
                 'host': self.host,
                 'port': self.port,
-                'database': self.db_name,
+                'database': self.database,
                 'auth_plugin': 'mysql_native_password'
             }
-            print("資料庫連線")
             mydb = mysql.connector.connect(**config)
-            # 生成一個遊標物件 ( 相當於 cmd 開啟 mysql 中的 mysql> )
-            print("連線結果", mydb)  # 印出連線結果
-            return mydb.cursor(dictionary=True)
-        except:
-            print("資料庫連接失敗：")
+            if mydb.is_connected():
+                print("資料庫連線成功")
+                # 生成一個遊標物件 ( 相當於 cmd 開啟 mysql 中的 mysql> )
+                return mydb
+            else:
+                print("資料庫連接失敗 1")
+        except Error as e:
+            print("資料庫連接失敗 2", e)
 
     def getFoodPrice(self, str):
         # 定義 SQL 語句
-        # cursor = self.db.cursor(dictionary=True)
-        sql = 'select * from foodprice WHERE foodName LIKE \'%{str}%\' '.format(
+        cursor = self.db.cursor(dictionary=True)
+        sql = 'select * from food WHERE name = "{str}" '.format(
             str=str)
-        self.cursor.execute(sql)  # 執行 SQL 語句
-        result = self.cursor.fetchall()  # 獲取返回結果
-        # cursor.close()
+        cursor.execute(sql)  # 執行 SQL 語句
+        result = cursor.fetchall()  # 獲取返回結果
+        cursor.close()
         return result

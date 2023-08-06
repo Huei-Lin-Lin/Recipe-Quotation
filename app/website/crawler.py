@@ -6,7 +6,7 @@ import asyncio
 
 async def crawler(init_cuisine, init_headcount):
     driver_path = "http://selenium:4444/wd/hub"
-    # driver_path = ".\\website\\chromedriver\\chromedriver.exe"
+    # driver_path = ".\\website\\chromedriver\\chromedriver-win64.exe"
 
     recipeURL = "https://icook.tw"
     twfoodURL = 'https://www.twfood.cc/'
