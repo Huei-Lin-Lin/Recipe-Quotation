@@ -59,7 +59,7 @@ def getNotQuery(foodDict):
     notQueryList = []
     for key, value in foodDict.items():
         if value == None:
-            notQueryList = key
+            notQueryList.append(key)
         else:
             continue
     return notQueryList
