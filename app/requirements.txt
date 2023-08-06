@@ -5,4 +5,4 @@ pymysql
 python-dotenv
 flask[async]
 # mysql-connector-python
-cryptography
+PyMySQL[rsa]
