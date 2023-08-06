@@ -19,10 +19,9 @@ services:
   
   mysql:
     image: mysql:latest
-    # build: ./app
     restart: always
-    ports:
-      - 3316:3316
+    # ports:
+    #   - 3316:3316
     volumes:
       - ./db/:/docker-entrypoint-initdb.d/:ro
     environment:
