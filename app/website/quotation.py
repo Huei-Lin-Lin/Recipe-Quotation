@@ -1,4 +1,3 @@
-import json
 # from .model import Food
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
@@ -41,13 +40,12 @@ def getQuotationResult(url, driver, notQueryList, foodDict):
 
 
 def queryFoodPrice(foodList):
-    from . import db
+    from . import myDB
     tempDict = dict()  # 蔬菜估價結果
     for food in foodList:
-        # result = Food.query.filter_by(name=food).first()
-        if db.db == None:
-            db.db = db.connect()
-        result = db.getFoodPrice(food)
+        if myDB.db == None or myDB.db.is_connected() == False:
+            myDB.db = myDB.connect()
+        result = myDB.getFoodPrice(food)
         print(len(result), result)
         if result == []:
             tempDict[food] = '找不到結果'

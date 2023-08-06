@@ -12,7 +12,8 @@ host = os.getenv('HOST')
 port = os.getenv('PORT')
 db_name = os.getenv('DB_NAME')
 
-db = MyDB(user=user, password=password, host=host, port=port, database=db_name)
+myDB = MyDB(user=user, password=password,
+            host=host, port=port, database=db_name)
 
 
 def create_app():
