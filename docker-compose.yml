@@ -22,7 +22,7 @@ services:
     # build: ./app
     restart: always
     ports:
-      - 3300:3300
+      - 3316:3316
     volumes:
       - ./db/:/docker-entrypoint-initdb.d/:ro
     environment:
