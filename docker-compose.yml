@@ -6,7 +6,7 @@ services:
     # build: ./app
     restart: always
     ports:
-      - 3300:3300
+      - 3306:3300
     environment:
       # MYSQL_ROOT_USER: root
       MYSQL_ROOT_HOST: '%'
