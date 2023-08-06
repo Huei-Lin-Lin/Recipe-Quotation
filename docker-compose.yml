@@ -23,18 +23,18 @@ services:
     restart: always
     ports:
       - 3300:3300
-    environment:
-      # MYSQL_ROOT_USER: root
-      MYSQL_ROOT_HOST: '%'
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_ALLOW_EMPTY_PASSWORD: false 
-      MYSQL_USER: dbadmin
-      MYSQL_PASSWORD: dbadmin
-      MYSQL_DATABASE: lsa2    
-      TZ: Asia/Taiwan
     volumes:
       # - db-data:/var/lib/mysql
       - ./db/:/docker-entrypoint-initdb.d/:ro
+    environment:
+      # MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: dbadmin
+      MYSQL_PASSWORD: dbadmin
+      MYSQL_ROOT_HOST: '%'
+      # MYSQL_ALLOW_EMPTY_PASSWORD: false 
+      MYSQL_DATABASE: lsa2    
+      TZ: Asia/Taiwan
   
   phpmyadmin:
     image: phpmyadmin:latest
