@@ -31,9 +31,9 @@ services:
       MYSQL_USER: dbadmin
       MYSQL_PASSWORD: dbadmin
       TZ: Asia/Taiwan
-      # MYSQL_ROOT_HOST: '%'
-      # MYSQL_ALLOW_EMPTY_PASSWORD: false 
-      # MYSQL_DATABASE: lsa2    
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_ALLOW_EMPTY_PASSWORD: false 
+      MYSQL_DATABASE: lsa2    
   
   phpmyadmin:
     image: phpmyadmin:latest
