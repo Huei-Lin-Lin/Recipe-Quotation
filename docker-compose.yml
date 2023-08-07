@@ -33,14 +33,3 @@ services:
       MYSQL_ROOT_HOST: '%'
       MYSQL_ALLOW_EMPTY_PASSWORD: false 
       MYSQL_DATABASE: lsa2    
-  
-  phpmyadmin:
-    image: phpmyadmin:latest
-    container_name: web_phpmyadmin
-    ports:
-      - 8080:80
-    environment:
-      - PMA_HOST=mysql
-    links:
-      - mysql
-    restart: always
