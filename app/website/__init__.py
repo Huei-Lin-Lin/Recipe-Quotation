@@ -18,7 +18,9 @@ def create_app():
     app.config['SECRET_KEY'] = 'My flask project!'
     app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{user}:{password}@{host}:{port}/{db_name}'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    db.init_app(app)
+
+    with app.app_context():
+        db.init_app(app)
 
     from .views import views
     app.register_blueprint(views, url_prefix='/')
