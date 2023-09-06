@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from ..model import Food
+from .. import db
 
 
 def element_exists(driver, mode, str):
@@ -40,6 +41,9 @@ def getQuotationResult(url, driver, notQueryList, foodDict):
             unit = driver.find_element(
                 By.CLASS_NAME, "vege_chart_th_unit").text
             foodDict[food] = [price, unit]
+            insert_food = Food(food, price, unit)
+            db.session.add(insert_food)
+            db.session.commit()
         except:
             foodDict[food] = "找不到結果"
             continue
