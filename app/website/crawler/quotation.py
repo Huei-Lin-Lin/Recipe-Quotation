@@ -54,7 +54,8 @@ def getQuotationResult(url, driver, notQueryList, foodDict):
 def queryFoodPrice(foodList):
     tempDict = dict()  # 蔬菜估價結果
     for food in foodList:
-        result = Food.query.filter_by(name=food).first()
+        # result = Food.query.filter_by(name=food).first()
+        result = Food.query.filter(Food.name.like(f"%{food}%")).first()
         if result == None:
             tempDict[food] = None
         else:
