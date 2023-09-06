@@ -2,8 +2,7 @@
 
 ## 料理食材換算與估價網
 
-- 根據料理名稱及人數，換算食材份量與推估食材花費
-  - 本專案為 [LSA_II_Shopping](https://github.com/NCNU-OpenSource/LSA_II_Shopping) 的更新版本，修改套件、爬蟲、程式結構等部分
+
 
 ## 目的
 
